@@ -11,16 +11,25 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.3.0",
+    "@angular/cdk": "^13.3.0",
     "@angular/common": "~13.3.0",
     "@angular/compiler": "~13.3.0",
     "@angular/core": "~13.3.0",
     "@angular/forms": "~13.3.0",
+    "@angular/material": "^13.3.0",
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "@progress/kendo-angular-buttons": "^7.0.4",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "@progress/kendo-angular-common": "^2.0.0",
+    "@progress/kendo-angular-l10n": "^3.0.0",
+    "@progress/kendo-angular-popup": "^4.0.0",
+    "@progress/kendo-licensing": "^1.0.2",
+    "@angular/localize": "~13.3.0",
+    "@progress/kendo-theme-default": "^5.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.3.0",
