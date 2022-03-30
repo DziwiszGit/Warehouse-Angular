@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,7 +10,10 @@ import { LoginComponent } from './components/login/login.component';
 import { WarehousemenComponent } from './components/warehousemen/warehousemen.component';
 import { ProductsComponent } from './components/products/products.component';
 import { HomeComponent } from './components/home/home.component';
-
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,11 @@ import { HomeComponent } from './components/home/home.component';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

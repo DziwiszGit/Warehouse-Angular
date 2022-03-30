@@ -1,1 +1,22 @@
-<p>products works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-6,col-sm-offset-1 col-md-offset-2">
+      <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Number</mat-label>
+          <input type="text"
+                 placeholder="Pick one"
+                 aria-label="Number"
+                 matInput
+                 [formControl]="myControl"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <template *ngFor="let Product of filteredOptions | async" >
+              {{Product.name}} - {{Product.weight}}(kg)
+            </template>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+</div>
