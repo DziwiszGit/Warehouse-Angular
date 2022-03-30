@@ -1,0 +1,9 @@
+.spacer{
+    flex: 1 1 auto;
+}
+a:hover{
+  color:red;
+}
+img{
+  margin-left: 20px;
+}
