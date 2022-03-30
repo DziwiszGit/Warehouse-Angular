@@ -5,20 +5,28 @@ import { AppComponent } from './app.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
-import { HomePageComponent } from './components/home-page/home-page.component';
+import {MatIconModule} from "@angular/material/icon";
+import { LoginComponent } from './components/login/login.component';
+import { WarehousemenComponent } from './components/warehousemen/warehousemen.component';
+import { ProductsComponent } from './components/products/products.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
-    HomePageComponent,
+    LoginComponent,
+    WarehousemenComponent,
+    ProductsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
