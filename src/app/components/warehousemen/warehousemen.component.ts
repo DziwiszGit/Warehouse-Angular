@@ -36,7 +36,6 @@ export class WarehousemenComponent implements OnInit {
 
   selected($event: string): void {
     const idFromEvent = Number($event);
-    // @ts-ignore
     this.warehousemanChosen = this.warehousemanList.find(value => value.id == idFromEvent);
   }
 

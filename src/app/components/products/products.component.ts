@@ -32,9 +32,7 @@ export class ProductsComponent implements OnInit {
   }
   selected($event: string): void {
     const idFromEvent = Number($event);
-    // @ts-ignore
     this.productChosen = this.productList.find(value => value.id == idFromEvent);
-    console.log(this.productChosen);
   }
   private _filter(value: string): Product[] {
     const filterValue = value.toLowerCase();
