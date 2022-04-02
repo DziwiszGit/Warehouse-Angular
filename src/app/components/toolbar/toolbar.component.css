@@ -1,9 +1,15 @@
 .spacer{
     flex: 1 1 auto;
 }
+.mini-spacer{
+  flex: 0.01 0.01 auto;
+}
 a:hover{
   color:red;
 }
 img{
   margin-left: 20px;
+}
+mat-toolbar{
+  background-color: black;
 }

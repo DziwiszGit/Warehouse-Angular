@@ -14,6 +14,15 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import {MatTableModule} from "@angular/material/table";
+import {MatCardModule} from "@angular/material/card";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import { SignupComponent } from './components/signup/signup.component';
+import {HttpClientModule} from "@angular/common/http";
+
+
 
 @NgModule({
   declarations: [
@@ -22,7 +31,8 @@ import { CommonModule } from '@angular/common';
     LoginComponent,
     WarehousemenComponent,
     ProductsComponent,
-    HomeComponent
+    HomeComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +44,13 @@ import { CommonModule } from '@angular/common';
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatTableModule,
+    MatCardModule,
+    MatPaginatorModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

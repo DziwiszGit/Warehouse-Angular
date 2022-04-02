@@ -11,6 +11,14 @@ export class Product {
     this._date = date;
   }
 
+  getInfo (): string{
+    return (
+      "ID="+ this._id +
+      "------Name="+ this._name +
+      "------Weight="+ this._weight +
+      "------Date="+ this._date);
+  }
+
   get id(): number {
     return this._id;
   }
@@ -42,6 +50,5 @@ export class Product {
   set date(value: string) {
     this._date = value;
   }
-
 }
 

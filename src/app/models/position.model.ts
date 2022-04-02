@@ -1,7 +1,7 @@
 export enum Position {
-  DRIVER,
-  HELPER,
-  MANAGER,
-  PACKER
+  DRIVER="DRIVER",
+  HELPER="HELPER",
+  MANAGER="MANAGER",
+  PACKER="PACKER"
 
 }

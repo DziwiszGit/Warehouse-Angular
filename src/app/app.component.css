@@ -1,0 +1,7 @@
+body{
+  background-image: url("../assets/staticIcons/background.png");
+  size: auto;
+  background-position: center;
+  background-size: cover ;
+  position: relative;
+}

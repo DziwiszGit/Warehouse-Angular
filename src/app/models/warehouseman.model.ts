@@ -3,12 +3,12 @@ import { Position } from "./position.model";
 export class Warehouseman {
   private _id : number;
   private _name : string;
-  private _surname : number;
+  private _surname : string;
   private _age : number;
   private _position : Position;
 
 
-  constructor(id: number, name: string, surname: number, age: number, position: Position) {
+  constructor(id: number, name: string, surname: string, age: number, position: Position) {
     this._id = id;
     this._name = name;
     this._surname = surname;
@@ -16,6 +16,14 @@ export class Warehouseman {
     this._position = position;
   }
 
+  getInfo (): string{
+    return (
+      "ID="+ this.id +
+      "------Name="+ this.name +
+      "------Surname="+ this.surname +
+      "------Age="+ this.age +
+      "------Position="+ this._position);
+  }
 
   get id(): number {
     return this._id;
@@ -33,11 +41,11 @@ export class Warehouseman {
     this._name = value;
   }
 
-  get surname(): number {
+  get surname(): string {
     return this._surname;
   }
 
-  set surname(value: number) {
+  set surname(value: string) {
     this._surname = value;
   }
 
