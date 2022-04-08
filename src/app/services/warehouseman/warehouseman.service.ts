@@ -9,7 +9,7 @@ import {Warehouseman} from "../../models/warehouseman.model";
 })
 export class WarehousemanService {
   public getWarehouseman(): Observable<Warehouseman[]> {
-    return this.http.get<Warehouseman[]>("http://localhost:8080/warehousemen");
+    return this.http.get<Warehouseman[]>("http://localhost:8080/api/warehousemen");
   }
   constructor(private http:HttpClient) { }
 }
