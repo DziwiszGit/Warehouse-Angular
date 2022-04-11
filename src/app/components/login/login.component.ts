@@ -1,6 +1,7 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Injectable, OnInit, Output} from '@angular/core';
 import {FormGroup,FormBuilder} from "@angular/forms";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -8,16 +9,6 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  createAuthorizationHeader(header : HttpHeaders){
-    header.append('Access-Control-Allow-Origin', '*')
-    header.append('Content-Type', 'application/json')
-    header.append('Access-Control-Allow-Headers','Content-Type')
-    header.append('Authorization','Basic' +
-    btoa("root:root"))
-    header.append('root','root')
-  }
-
 
   public loginForm !: FormGroup;
 
@@ -30,17 +21,16 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  public authorization(){
+    let headers = new HttpHeaders()
+        .set('Access-Control-Allow-Origin', '*')
+        .set('Access-Control-Allow-Origin', 'http://localhost:8080')
+        .set('Content-Type', 'application/json')
+        .set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')
+        .set('Authorization','Basic ' +
+      btoa(this.loginForm.value.login+":"+this.loginForm.value.password));
+    this.http.get("http://localhost:8080/api",{headers:headers})
+      .subscribe()
 
-  login() {
-    let headers = new HttpHeaders();
-    this.createAuthorizationHeader(headers);
-    this.http.get("localhost:8080/api/user",{
-      headers:headers
-    } )
-      .subscribe(res=>{
-        alert("Login successfull");
-        this.loginForm.reset();
-      })
-    console.log(headers)
   }
 }
