@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {LoginService} from "./services/login/login.service";
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   loadedFeature = 'home';
 
-  onNavigate(feature: string){
+  public onNavigate(feature: string){
     this.loadedFeature = feature;
   }
   title = 'AngularWarehouse';

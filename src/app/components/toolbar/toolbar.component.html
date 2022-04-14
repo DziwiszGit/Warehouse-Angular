@@ -6,11 +6,11 @@
       <img src="/assets/staticIcons/linkedin.png/"></a></span>
     <div class="spacer"></div>
     <button mat-button href="#" (click)="onSelect('home')">Home</button>
-    <button mat-button href="#" (click)="onSelect('products')">Products</button>
-    <button mat-button href="#" (click)="onSelect('warehousemen')">Warehousemen</button>
-    <button mat-raised-button color="accent" href="#" (click)="onSelect('login')">Login</button>
+    <button mat-button *ngIf="isLogin===true" href="#" (click)="onSelect('products')">Products</button>
+    <button mat-button *ngIf="isLogin===true" href="#" (click)="onSelect('warehousemen')">Warehousemen</button>
+    <button mat-raised-button *ngIf="isLogin===false" color="accent" href="#" (click)="onSelect('login')">Login</button>
     <div class="mini-spacer"></div>
-    <button mat-raised-button color="accent" href="#" (click)="onSelect('signup')">Signup</button>
+    <button mat-raised-button *ngIf="isLogin===false" color="accent" href="#" (click)="onSelect('signup')">Signup</button>
     <div class="mini-spacer"></div>
-    <button mat-raised-button color="accent" href="#" (click)="onSelect('logout')">Logout</button>
+    <button mat-raised-button *ngIf="isLogin===true" color="accent" href="#" (click)="onSelect('logout')">Logout</button>
 </mat-toolbar>

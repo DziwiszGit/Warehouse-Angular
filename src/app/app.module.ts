@@ -21,6 +21,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { SignupComponent } from './components/signup/signup.component';
 import {HttpClientModule} from "@angular/common/http";
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 
@@ -32,7 +33,8 @@ import {HttpClientModule} from "@angular/common/http";
     WarehousemenComponent,
     ProductsComponent,
     HomeComponent,
-    SignupComponent
+    SignupComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
