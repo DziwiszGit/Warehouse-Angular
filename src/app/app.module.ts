@@ -22,7 +22,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import { SignupComponent } from './components/signup/signup.component';
 import {HttpClientModule} from "@angular/common/http";
 import { LogoutComponent } from './components/logout/logout.component';
-
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
@@ -52,7 +52,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     MatTableModule,
     MatCardModule,
     MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,16 +1,16 @@
 <mat-toolbar color="primary">
-  <button mat-flat-button color="primary" href="#" (click)="onSelect('home')"><span>Warehouse</span></button>
+  <button mat-flat-button color="primary" href="#" (click)="onSelect()" routerLink="home"><span>Warehouse</span></button>
     <span><a target="_blank" href="https://github.com/DziwiszGit">
       <img src="/assets/staticIcons/github.png"/></a></span>
     <span><a target="_blank" href="https://www.linkedin.com/in/pawe%C5%82-dziwisz-a5b7a1196">
       <img src="/assets/staticIcons/linkedin.png/"></a></span>
     <div class="spacer"></div>
-    <button mat-button href="#" (click)="onSelect('home')">Home</button>
-    <button mat-button *ngIf="isLogin===true" href="#" (click)="onSelect('products')">Products</button>
-    <button mat-button *ngIf="isLogin===true" href="#" (click)="onSelect('warehousemen')">Warehousemen</button>
-    <button mat-raised-button *ngIf="isLogin===false" color="accent" href="#" (click)="onSelect('login')">Login</button>
+    <button mat-button href="#" (click)="onSelect()" routerLink="home">Home</button>
+    <button mat-button *ngIf="isLogin===true" href="#" (click)=onSelect() routerLink="products">Products</button>
+    <button mat-button *ngIf="isLogin===true" href="#" (click)="onSelect()" routerLink="warehousemen">Warehousemen</button>
+    <button mat-raised-button *ngIf="isLogin===false" color="accent" href="#" (click)="onSelect()" routerLink="login">Login</button>
     <div class="mini-spacer"></div>
-    <button mat-raised-button *ngIf="isLogin===false" color="accent" href="#" (click)="onSelect('signup')">Signup</button>
+    <button mat-raised-button *ngIf="isLogin===false" color="accent" href="#" (click)="onSelect()" routerLink="signup">Signup</button>
     <div class="mini-spacer"></div>
-    <button mat-raised-button *ngIf="isLogin===true" color="accent" href="#" (click)="onSelect('logout')">Logout</button>
+    <button mat-raised-button *ngIf="isLogin===true" color="accent" href="#" (click)="onSelect()" routerLink="logout">Logout</button>
 </mat-toolbar>

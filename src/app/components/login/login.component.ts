@@ -1,7 +1,8 @@
 import {Component, EventEmitter, Injectable, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {FormGroup,FormBuilder} from "@angular/forms";
 import {LoginService} from "../../services/login/login.service";
-import {ToolbarComponent} from "../toolbar/toolbar.component";
+import {Router} from "@angular/router";
+
 
 
 @Component({
@@ -10,12 +11,10 @@ import {ToolbarComponent} from "../toolbar/toolbar.component";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  @ViewChild(ToolbarComponent) toolbar : any;
-  private homeString : string = 'home';
   public loginForm !: FormGroup;
   constructor(private formBulider: FormBuilder,
-              private service:LoginService) {}
-
+              private service:LoginService,
+              private router :Router) {}
   ngOnInit(): void {
     this.loginForm = this.formBulider.group({
       login:[''],
@@ -26,6 +25,6 @@ export class LoginComponent implements OnInit {
     this.service.authorization(this.loginForm.value.login,
       this.loginForm.value.password);
     this.loginForm.reset();
-    this.toolbar.onSelect(this.homeString);
+    this.router.navigateByUrl('home');
   }
 }

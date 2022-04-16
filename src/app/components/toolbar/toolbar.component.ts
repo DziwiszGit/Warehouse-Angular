@@ -1,7 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {LoginService} from "../../services/login/login.service";
-import {AppComponent} from "../../app.component";
-import {ToolbarService} from "../../services/toolbar/toolbar.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-toolbar',
@@ -10,17 +9,16 @@ import {ToolbarService} from "../../services/toolbar/toolbar.service";
 })
 
 export class ToolbarComponent implements OnInit {
-  @Output() public featureSelected = new EventEmitter<string>();
 
   public isLogin : boolean = this.loginService.isAuthorization;
 
-  onSelect(feature: string){
+  onSelect(){
     if(this.loginService.isAuthorization !== this.isLogin){
       this.isLogin=this.loginService.isAuthorization;
     }
-    this.featureSelected.emit(feature);
   }
-  constructor(private loginService : LoginService) {}
+  constructor(private loginService : LoginService,
+              private router : Router) {}
 
   ngOnInit(): void {
   }

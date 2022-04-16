@@ -18,9 +18,25 @@
         </mat-form-field>
       </form>
 
-      <mat-card>
-        <p>Your chosen product has ID= {{getchosen()}}</p>
+      <mat-card *ngIf="getChosenProductId()">
+        <p>Your chosen product has ID = {{getChosenProductId()}} and his weight = {{getChosenProductWeight()}} </p>
+        <form [formGroup]="valuesToChange" (ngSubmit)="buttonType">
+          <input formControlName="weight" type="number" placeholder="Provide quantity in (kg.)">
+          <button type="submit" mat-raised-button color="primary" (click)="onSubmit('add')">Add</button>
+          <button type="submit" mat-raised-button color="warn" (click)="onSubmit('pick')">Pick from warehouse</button>
+        </form>
       </mat-card>
+
+      <mat-card>
+        <mat-label>If your product doesn't exist, just add new :)</mat-label>
+        <form [formGroup]="newProduct" (ngSubmit)="addNewProduct()">
+          <input formControlName="name" type="text" placeholder="Provide name">
+          <input formControlName="weight" type="number" placeholder="Provide quantity in (kg.)">
+          <button type="submit" mat-raised-button color="primary">Add</button>
+        </form>
+      </mat-card>
+
+
       <br/>
       <table mat-table [dataSource]="productList" class="mat-elevation-z8">
 
