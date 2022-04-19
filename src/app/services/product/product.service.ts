@@ -22,28 +22,37 @@ export class ProductService {
         {headers:headers});
     }
   }
+
+  public getInfoAboutExist(product : Product) : Observable<boolean>{
+      let headers = this.loginservice.header;
+      return this.http.get<boolean>("http://localhost:8080/api/products/check/"+product.name
+        ,{headers:headers});
+  }
+
   public changeWeight(product: Product | undefined){
-    if (this.loginservice.isAuthorization) {
+    if(this.loginservice.isAuthorization) {
       let headers = this.loginservice.header;
       this.http.post("http://localhost:8080/api/products/update"
         , product
-        , {headers:headers}).subscribe();
+        , {headers: headers}).subscribe();
     }
   }
+
+
   public addProduct(product : Product){
     if (this.loginservice.isAuthorization) {
       let headers = this.loginservice.header;
-      if(!this.http.get<boolean>("http://localhost:8080/api/products/"+product.id,
-        {headers:headers}).subscribe()) {
-        this.http.post("http://localhost:8080/api/products"
-          , product
-          , {headers:headers}).subscribe();
-        this.router.navigateByUrl('home');
-      }
-      //todo
-      else{
-        console.log("!!!!!!! Product already exist")
-      }
+      this.getInfoAboutExist(product).subscribe(info => {
+        if (info) {
+          this.http.post("http://localhost:8080/api/products"
+            , product
+            , {headers: headers}).subscribe();
+          this.router.navigateByUrl('home');
+        } else{
+          console.log("Product exist !!!");
+          window.alert("Product exist !!!");
+        }
+      });
     }
   }
 }

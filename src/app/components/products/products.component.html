@@ -28,10 +28,16 @@
       </mat-card>
 
       <mat-card>
-        <mat-label>If your product doesn't exist, just add new :)</mat-label>
-        <form [formGroup]="newProduct" (ngSubmit)="addNewProduct()">
-          <input formControlName="name" type="text" placeholder="Provide name">
-          <input formControlName="weight" type="number" placeholder="Provide quantity in (kg.)">
+        <mat-label>If your product doesn't exist, just add new or delete existing</mat-label>
+        <form class="example-form" [formGroup]="newProduct" (ngSubmit)="addNewProduct()">
+          <mat-form-field class="example-mid-width" appearance="fill">
+            <mat-label>Provide name</mat-label>
+            <input matInput formControlName="name" type="text" placeholder="name">
+          </mat-form-field>
+          <mat-form-field class="example-mid-width" appearance="fill">
+            <mat-label>Provide weight</mat-label>
+            <input matInput formControlName="weight" type="number" placeholder="weight in (kg.)">
+          </mat-form-field>
           <button type="submit" mat-raised-button color="primary">Add</button>
         </form>
       </mat-card>

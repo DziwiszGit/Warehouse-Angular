@@ -7,9 +7,16 @@
 .example-full-width {
   width: 100%;
 }
+.example-mid-width {
+  width: 45%;
+  margin-left: 1%;
+}
 table{
   width: 100%;
 }
 button{
   margin-left: 10px;
+}
+.example-form input{
+  width: 50%;
 }
