@@ -1,27 +1,9 @@
-# AngularWarehouse
+! IMAGES
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![1](https://user-images.githubusercontent.com/63125902/165376090-af8491d0-3fe6-48f0-8083-baabcda0f9a0.png)
+![2](https://user-images.githubusercontent.com/63125902/165376105-2479e9b0-133b-4cbf-a431-6c847d36500c.png)
+![7](https://user-images.githubusercontent.com/63125902/165376416-b8e2a985-572a-43fb-8c93-98dee5257d83.png)
+![3](https://user-images.githubusercontent.com/63125902/165376112-73c6957b-e545-4a95-84e6-fffe197620bb.png)
+![4](https://user-images.githubusercontent.com/63125902/165376123-26207622-6cb2-409d-960f-23aa201d1360.png)
+![5](https://user-images.githubusercontent.com/63125902/165376127-31fb2a93-4aea-4790-af55-a8f99ba1ef92.png)
+![6](https://user-images.githubusercontent.com/63125902/165376135-0a63571e-e4d3-4e58-bbeb-cec16ed172ca.png)
