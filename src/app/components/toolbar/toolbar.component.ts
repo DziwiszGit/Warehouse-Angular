@@ -1,6 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LoginService} from "../../services/login/login.service";
-import {Router} from "@angular/router";
+import {map, Observable} from "rxjs";
 
 @Component({
   selector: 'app-toolbar',
@@ -9,18 +9,12 @@ import {Router} from "@angular/router";
 })
 
 export class ToolbarComponent implements OnInit {
+  userLogged$: Observable<boolean>;
 
-  public isLogin : boolean = this.loginService.isAuthorization;
-
-  onSelect(){
-    if(this.loginService.isAuthorization !== this.isLogin){
-      this.isLogin=this.loginService.isAuthorization;
-    }
+  constructor(private loginService: LoginService) {
+    this.userLogged$ = loginService.isLoggedIn$
   }
-  constructor(private loginService : LoginService,
-              private router : Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

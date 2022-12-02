@@ -1,33 +1,40 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {ToolbarService} from "../toolbar/toolbar.service";
-
+import {BehaviorSubject, catchError, EMPTY, map, tap} from "rxjs";
+import {Authentication} from "../../models/authentication"
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  constructor(private http:HttpClient) { }
+  private authentication$ = new BehaviorSubject<Authentication | null>(null)
+  isLoggedIn$ = this.authentication$.asObservable().pipe(map(auth => !!auth))
 
-  public isAuthorization : boolean = false;
-  public login : string ='';
-  public password : string ='';
-  public header : HttpHeaders = new HttpHeaders();
+  get authSnapshot() {
+    return this.authentication$.value
+  }
 
-  public authorization(login:string,password:string){
-  let headers = new HttpHeaders()
-    .set('Access-Control-Allow-Origin', '*')
-    .set('Access-Control-Allow-Origin', 'http://localhost:8080')
-    .set('Content-Type', 'application/json')
-    .set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')
-    .set('Authorization','Basic ' +
-      btoa(login+":"+password));
-    this.header = headers;
-    this.http.get<boolean>("http://localhost:8080/api",{headers:headers})
-    .subscribe(value => {
-      this.isAuthorization=value;
-      this.login=login;
-      this.password=password;}
-  ,error => {console.log("Fail with return")})
+  constructor(private http: HttpClient) {
+  }
+
+
+  public authorization(login: string, password: string) {
+    let headers = new HttpHeaders().set('Authorization', 'Basic ' + btoa(login + ":" + password));
+    this.http.get<boolean>("http://localhost:8080/api", {headers: headers}).pipe(
+      tap(_ => {
+        this.authentication$.next({
+          Password: password,
+          Username: login
+        })
+      }),
+      catchError(err => {
+        console.log("Fail with return")
+        return EMPTY
+      })
+    ).subscribe()
+  }
+
+  logout() {
+    this.authentication$.next(null)
   }
 }

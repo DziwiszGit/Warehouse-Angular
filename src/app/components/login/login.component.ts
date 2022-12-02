@@ -1,8 +1,7 @@
-import {Component, EventEmitter, Injectable, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {FormGroup,FormBuilder} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {LoginService} from "../../services/login/login.service";
 import {Router} from "@angular/router";
-
 
 
 @Component({
@@ -12,16 +11,20 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
   public loginForm !: FormGroup;
+
   constructor(private formBulider: FormBuilder,
-              private service:LoginService,
-              private router :Router) {}
+              private service: LoginService,
+              private router: Router) {
+  }
+
   ngOnInit(): void {
     this.loginForm = this.formBulider.group({
-      login:[''],
-      password:['']
+      login: [''],
+      password: ['']
     })
   }
-  public authorization():void{
+
+  public authorization(): void {
     this.service.authorization(this.loginForm.value.login,
       this.loginForm.value.password);
     this.loginForm.reset();

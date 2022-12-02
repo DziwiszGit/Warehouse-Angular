@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Product} from "../../models/product.model";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {map, Observable, startWith} from "rxjs";
+import {map, Observable, startWith, tap} from "rxjs";
 import {ProductService} from "../../services/product/product.service";
 
 @Component({
@@ -15,22 +15,23 @@ export class ProductsComponent implements OnInit {
   filteredOptions: Observable<Product[]> | undefined;
   displayedColumns: string[] = ['id', 'name', 'weight'];
   productChosen: Product | undefined;
-  productWithNewWeight : Product | undefined;
+  productWithNewWeight: Product | undefined;
   buttonType: any;
   valuesToChange !: FormGroup;
   newProduct !: FormGroup;
 
 
-  constructor(private productService:ProductService,
-              private formBulider: FormBuilder) {}
+  constructor(private productService: ProductService,
+              private formBulider: FormBuilder) {
+  }
 
   ngOnInit() {
-    this.productService.getProducts().subscribe(res=>{
-      this.productList=res;
+    this.productService.getProducts().subscribe(res => {
+      this.productList = res;
     });
 
     this.valuesToChange = this.formBulider.group({
-      weight:[]
+      weight: []
     })
 
     this.newProduct = this.formBulider.group({
@@ -43,38 +44,43 @@ export class ProductsComponent implements OnInit {
       map(value => this._filter(value)),
     );
   }
+
   selected($event: string): void {
     const idFromEvent = Number($event);
     this.productChosen = this.productList.find(value => value.id == idFromEvent);
-    this.productWithNewWeight= this.productChosen;
+    this.productWithNewWeight = this.productChosen;
   }
+
   private _filter(value: string): Product[] {
     const filterValue = value.toLowerCase();
     return this.productList.filter(option => option.name.toLowerCase().includes(filterValue));
   }
-  getChosenProductId(){
-   return this.productChosen?.id;
+
+  getChosenProductId() {
+    return this.productChosen?.id;
   }
-  getChosenProductWeight(){
+
+  getChosenProductWeight() {
     return this.productChosen?.weight;
   }
 
-  addNewProduct():void{
-      this.productService.addProduct(
-        new Product(0,
-          this.newProduct.value.name,
-          this.newProduct.value.weight,
-          Date.now()))
+  addNewProduct(): void {
+    this.productService.updateProducts(new Product(0,
+      this.newProduct.value.name.toUpperCase(),
+      this.newProduct.value.weight,
+      Date.now())).pipe(
+      tap(newProducts => this.productList = newProducts)
+    ).subscribe()
   }
 
-  onSubmit(buttonType: string):void{
-    if(buttonType==="add") {
+  onSubmit(buttonType: string): void {
+    if (buttonType === "add") {
       // @ts-ignore
       this.productWithNewWeight?.weight +=
         this.valuesToChange.value.weight;
       this.productService.changeWeight(this.productWithNewWeight);
     }
-    if(buttonType==="pick"){
+    if (buttonType === "pick") {
       // @ts-ignore
       this.productWithNewWeight?.weight -=
         this.valuesToChange.value.weight;

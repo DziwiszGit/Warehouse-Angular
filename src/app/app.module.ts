@@ -1,4 +1,4 @@
-import { NgModule  } from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,9 +20,11 @@ import {MatTableModule} from "@angular/material/table";
 import {MatCardModule} from "@angular/material/card";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { SignupComponent } from './components/signup/signup.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import { LogoutComponent } from './components/logout/logout.component';
 import {RouterModule} from "@angular/router";
+import {AuthInterceptor} from "./interceptors/auth.interceptor";
+import {AuthResolver} from "./resolver/auth.resolver";
 
 
 @NgModule({
@@ -55,7 +57,12 @@ import {RouterModule} from "@angular/router";
     HttpClientModule,
     RouterModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, multi: true, useClass: AuthInterceptor},
+    {provide:APP_INITIALIZER, multi: true, useFactory: function (http: HttpClient) {
+        return new AuthResolver(http).loadUserData
+      }, deps: [HttpClient]}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
