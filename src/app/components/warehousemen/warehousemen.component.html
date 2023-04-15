@@ -18,8 +18,11 @@
         </mat-form-field>
       </form>
 
-      <mat-card>
+      <mat-card *ngIf="getchosen()">
           <p>Your chosen warehouseman has ID = {{getchosen()}}</p>
+        <form (ngSubmit)="buttonType">
+          <button type="submit" mat-raised-button color="primary" (click)="onSubmit('delete')">Delete</button>
+        </form>
       </mat-card>
       <br/>
 

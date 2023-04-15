@@ -19,6 +19,7 @@ export class WarehousemenComponent implements OnInit {
   filteredOptions: Observable<Warehouseman[]> | undefined;
   displayedColumns: string[] = ['id', 'name', 'surname', 'age','position'];
   warehousemanChosen: Warehouseman | undefined;
+  buttonType: any;
 
   constructor(private service:WarehousemanService) {}
 
@@ -47,5 +48,12 @@ export class WarehousemenComponent implements OnInit {
   private _filter(value: string): Warehouseman[] {
     const filterValue = value.toLowerCase();
     return this.warehousemanList.filter(option => option.name.toLowerCase().includes(filterValue));
+  }
+
+  onSubmit(buttonType: string): void {
+    if (buttonType === "delete") {
+      this.service.deleteWarehouseman(this.getchosen());
+      // delete this.warehousemanList.indexOf(this.warehousemanChosen);
+    }
   }
 }
